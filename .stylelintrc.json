@@ -4,7 +4,12 @@
     "apps/frontend/src/styles/colors.scss",
     "apps/frontend/src/styles/typography.scss"
   ],
-  "plugins": ["stylelint-scss"],
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
   "rules": {
     "at-rule-disallowed-list": ["import"],
     "at-rule-allowed-list": ["use", "forward", "mixin", "include"],
@@ -17,7 +22,25 @@
         "/^map\\.get/"
       ]
     },
-    "scss/dollar-variable-pattern": "^colors\\.[a-z0-9\\-]+$"
+    "scss/no-undeclared-variable": true,
+    "scss/dollar-variable-default": null,
+    "scss/dollar-variable-pattern": "^[a-z][a-zA-Z0-9]+$",
+    "scss/no-global-function-names": true,
+    "scss/at-rule-no-unknown": true,
+    "scss/at-import-partial-extension": null,
+    "scss/function-color-relative": true,
+    "scss/at-use-no-unnamespaced": true,
+    "scss/at-use-no-redundant-alias": true,
+    "scss/at-extend-no-missing-placeholder": true,
+    "scss/comment-no-empty": true,
+    "scss/operator-no-newline-after": true,
+    "property-no-unknown": true,
+    "no-invalid-position-at-import-rule": null,
+    "no-descending-specificity": null,
+    "declaration-empty-line-before": null,
+    "value-keyword-case": null,
+    "at-rule-empty-line-before": null,
+    "color-function-notation": "legacy"
   },
   "overrides": [
     {

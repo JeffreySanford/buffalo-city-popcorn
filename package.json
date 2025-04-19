@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "check:all": "cls; npx stylelint \"apps/frontend/src/**/*.scss\"; npx nx run frontend:build:production"
+    "check:all": "cls; npx stylelint \"apps/frontend/src/**/*.scss\"; npx nx run frontend:build:production",
+    "lint:scss": "stylelint \"apps/frontend/src/**/*.scss\" --fix",
+    "lint:scss:ci": "stylelint \"apps/frontend/src/**/*.scss\""
   },
   "private": true,
   "dependencies": {
@@ -69,8 +71,9 @@
     "nx": "20.8.0",
     "postcss-scss": "^4.0.9",
     "prettier": "^2.6.2",
-    "stylelint": "^16.18.0",
-    "stylelint-scss": "^6.11.1",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-scss": "^5.2.1",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "tslib": "^2.3.0",

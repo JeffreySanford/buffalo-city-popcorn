@@ -1,0 +1,223 @@
+// Mixins for Buffalo City Popcorn
+@use 'sass:color';
+@use 'variables' as variables;
+@use 'colors' as colors;
+
+// Flexbox mixins for layout
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Responsive mixins
+@mixin media-breakpoint-up($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: variables.$breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: variables.$breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: variables.$breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: variables.$breakpoint-xl) { @content; }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: variables.$breakpoint-2xl) { @content; }
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: (variables.$breakpoint-sm - 1)) { @content; }
+  } @else if $breakpoint == sm {
+    @media (max-width: (variables.$breakpoint-md - 1)) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: (variables.$breakpoint-lg - 1)) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: (variables.$breakpoint-xl - 1)) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: (variables.$breakpoint-2xl - 1)) { @content; }
+  }
+}
+
+// Container mixin
+@mixin container {
+  width: 100%;
+  padding-right: variables.$spacing-md;
+  padding-left: variables.$spacing-md;
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include media-breakpoint-up(sm) {
+    max-width: variables.$container-max-width-sm;
+  }
+  
+  @include media-breakpoint-up(md) {
+    max-width: variables.$container-max-width-md;
+  }
+  
+  @include media-breakpoint-up(lg) {
+    max-width: variables.$container-max-width-lg;
+  }
+  
+  @include media-breakpoint-up(xl) {
+    max-width: variables.$container-max-width-xl;
+  }
+  
+  @include media-breakpoint-up(2xl) {
+    max-width: variables.$container-max-width-2xl;
+  }
+}
+
+// Typography mixins
+@mixin heading-1 {
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+@mixin heading-2 {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.15;
+}
+
+@mixin heading-3 {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+@mixin heading-4 {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+@mixin body-text {
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+// Element mixins
+@mixin card {
+  background-color: colors.$white;
+  border-radius: variables.$border-radius-md;
+  box-shadow: variables.$box-shadow-md;
+  overflow: hidden;
+}
+
+@mixin button {
+  display: inline-block;
+  padding: variables.$spacing-sm variables.$spacing-lg;
+  border-radius: variables.$border-radius-md;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all variables.$transition-duration-normal ease;
+}
+
+// Gamification mixins
+@mixin badge($size: variables.$badge-size-md) {
+  width: $size;
+  height: $size;
+  border-radius: variables.$border-radius-full;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: colors.$burgundy;
+  color: colors.$white;
+  font-weight: bold;
+  box-shadow: variables.$box-shadow-md;
+}
+
+@mixin progress-bar {
+  height: variables.$progress-bar-height;
+  background-color: rgba(colors.$burgundy, 0.2);
+  border-radius: variables.$progress-bar-border-radius;
+  overflow: hidden;
+  
+  .progress-value {
+    height: 100%;
+    background-color: colors.$burgundy;
+    border-radius: variables.$progress-bar-border-radius;
+    transition: width variables.$transition-duration-slow ease;
+  }
+}
+
+@mixin achievement-card {
+  @include card;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: variables.$spacing-md;
+  text-align: center;
+  
+  .achievement-icon {
+    @include badge(variables.$badge-size-lg);
+
+    margin-bottom: variables.$spacing-sm;
+  }
+  
+  .achievement-title {
+    font-weight: 500;
+    margin-bottom: variables.$spacing-xxs;
+  }
+  
+  .achievement-description {
+    font-size: 0.95rem;
+    color: rgba(colors.$dark-text, 0.7);
+  }
+}
+
+// Vintage style mixins
+@mixin vintage-paper {
+  background-color: colors.$antique-parchment;
+  background-image: variables.$vintage-paper-grain;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: variables.$vintage-vignette;
+    pointer-events: none;
+  }
+}
+
+@mixin western-border {
+  border: 2px solid colors.$dark-brown;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border: 1px solid colors.$dark-brown;
+    pointer-events: none;
+  }
+}

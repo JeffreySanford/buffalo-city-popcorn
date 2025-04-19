@@ -1,0 +1,346 @@
+// Typography definitions for Buffalo City Popcorn
+// Following Material Design 3 specifications for Angular 19+
+
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use './variables' as variables;
+
+// Font families
+$font-family-heading: Georgia, serif;
+$font-family-body: Roboto, 'Helvetica Neue', Arial, sans-serif;
+$font-family-accent: 'Brush Script MT', cursive;
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// Font sizes
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-md: 1.125rem;   // 18px
+$font-size-lg: 1.25rem;    // 20px
+$font-size-xl: 1.5rem;     // 24px
+$font-size-2xl: 1.875rem;  // 30px
+$font-size-3xl: 2.25rem;   // 36px
+$font-size-4xl: 3rem;      // 48px
+
+// Line heights
+$line-height-tight: 1.2;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Letter spacing
+$letter-spacing-tight: -0.025em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;
+
+// Material Typography Config
+// Disabled for now due to Angular Material 19+ issues
+// See MATERIAL_DESIGN_3.md for details on how to re-enable
+
+// Material typography levels
+// This will be used when Angular Material typography is fully working with MD3
+$buffalo-typography-levels: (
+  headline-1: (
+    font-family: $font-family-heading,
+    font-size: $font-size-4xl,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-tight,
+    letter-spacing: $letter-spacing-tight
+  ),
+  headline-2: (
+    font-family: $font-family-heading,
+    font-size: $font-size-3xl,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-tight,
+    letter-spacing: $letter-spacing-tight
+  ),
+  headline-3: (
+    font-family: $font-family-heading,
+    font-size: $font-size-2xl,
+    font-weight: $font-weight-bold,
+    line-height: $line-height-tight,
+    letter-spacing: $letter-spacing-normal
+  ),
+  headline-4: (
+    font-family: $font-family-heading,
+    font-size: $font-size-xl,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-tight,
+    letter-spacing: $letter-spacing-normal
+  ),
+  headline-5: (
+    font-family: $font-family-heading,
+    font-size: $font-size-lg,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-tight,
+    letter-spacing: $letter-spacing-normal
+  ),
+  headline-6: (
+    font-family: $font-family-heading,
+    font-size: $font-size-md,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-tight,
+    letter-spacing: $letter-spacing-normal
+  ),
+  subtitle-1: (
+    font-family: $font-family-body,
+    font-size: $font-size-lg,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-normal
+  ),
+  subtitle-2: (
+    font-family: $font-family-body,
+    font-size: $font-size-base,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-normal
+  ),
+  body-1: (
+    font-family: $font-family-body,
+    font-size: $font-size-base,
+    font-weight: $font-weight-regular,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-normal
+  ),
+  body-2: (
+    font-family: $font-family-body,
+    font-size: $font-size-sm,
+    font-weight: $font-weight-regular,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-normal
+  ),
+  caption: (
+    font-family: $font-family-body,
+    font-size: $font-size-xs,
+    font-weight: $font-weight-regular,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-normal
+  ),
+  button: (
+    font-family: $font-family-body,
+    font-size: $font-size-base,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-wide
+  ),
+  overline: (
+    font-family: $font-family-body,
+    font-size: $font-size-xs,
+    font-weight: $font-weight-medium,
+    line-height: $line-height-normal,
+    letter-spacing: $letter-spacing-wide,
+    text-transform: uppercase
+  )
+);
+
+// Define the typography config for Material
+$buffalo-typography: (
+  // Base settings
+  font-family: $font-family-body,
+  
+  // MD3 levels
+  headline-1: (
+    font-family: $font-family-heading,
+    font-size: 2.5rem,
+    line-height: 1.1,
+    font-weight: 700,
+    letter-spacing: -0.02em,
+  ),
+  headline-2: (
+    font-family: $font-family-heading,
+    font-size: 2rem,
+    line-height: 1.15,
+    font-weight: 700,
+    letter-spacing: -0.01em,
+  ),
+  headline-3: (
+    font-family: $font-family-heading,
+    font-size: 1.5rem,
+    line-height: 1.2,
+    font-weight: 700,
+    letter-spacing: normal,
+  ),
+  headline-4: (
+    font-family: $font-family-heading,
+    font-size: 1.2rem,
+    line-height: 1.25,
+    font-weight: 500,
+    letter-spacing: normal,
+  ),
+  body-1: (
+    font-size: 1rem,
+    line-height: 1.5,
+    font-weight: 400,
+    letter-spacing: 0.03125em,
+  ),
+  body-2: (
+    font-size: 0.875rem,
+    line-height: 1.5,
+    font-weight: 400,
+    letter-spacing: 0.01786em,
+  ),
+  subtitle-1: (
+    font-size: 1rem,
+    line-height: 1.5,
+    font-weight: 500,
+    letter-spacing: 0.00937em,
+  ),
+  button: (
+    font-size: 0.875rem,
+    line-height: 1.5,
+    font-weight: 500,
+    letter-spacing: 0.08929em,
+  ),
+  caption: (
+    font-size: 0.75rem,
+    line-height: 1.5,
+    font-weight: 400,
+    letter-spacing: 0.03333em,
+  ),
+  
+  // MD2 backward compatibility levels
+  // These are needed for Angular Material 19 which still relies on some MD2 typography tokens
+  headline-5: (
+    font-family: $font-family-heading,
+    font-size: 1.5rem,  // Same as headline-3 for consistency
+    line-height: 1.2,
+    font-weight: 400,
+    letter-spacing: normal,
+  ),
+  headline-6: (
+    font-family: $font-family-heading,
+    font-size: 1.25rem, 
+    line-height: 1.25,
+    font-weight: 500,
+    letter-spacing: normal,
+  ),
+  subtitle-2: (
+    font-size: 0.875rem,
+    line-height: 1.5,
+    font-weight: 500,
+    letter-spacing: 0.00714em,
+  ),
+  body-3: (  // Extra level for small text
+    font-size: 0.75rem,
+    line-height: 1.5,
+    font-weight: 400,
+    letter-spacing: 0.03333em,
+  ),
+  // For older Material components that might use these
+  title: (
+    font-family: $font-family-heading,
+    font-size: 1.25rem,
+    line-height: 1.25,
+    font-weight: 500,
+    letter-spacing: normal,
+  ),
+  subheading-1: (
+    font-size: 0.95rem,
+    line-height: 1.5,
+    font-weight: 400,
+    letter-spacing: 0.01786em,
+  ),
+  subheading-2: (
+    font-size: 0.9rem,
+    line-height: 1.5,
+    font-weight: 400,
+    letter-spacing: 0.01786em,
+  )
+);
+
+// Typography utility classes
+.text-heading-1 {
+  font-family: $font-family-heading;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.text-heading-2 {
+  font-family: $font-family-heading;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+}
+
+.text-heading-3 {
+  font-family: $font-family-heading;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+}
+
+.text-heading-4 {
+  font-family: $font-family-heading;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-tight;
+}
+
+.text-body {
+  font-family: $font-family-body;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+}
+
+.text-small {
+  font-family: $font-family-body;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+}
+
+.text-accent {
+  font-family: $font-family-accent;
+  font-size: $font-size-xl;
+  line-height: $line-height-normal;
+}
+
+.text-caption {
+  font-family: $font-family-body;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+// Responsive typography adjustments
+@media (max-width: variables.$breakpoint-md) {
+  .text-heading-1 {
+    font-size: $font-size-3xl;
+  }
+  
+  .text-heading-2 {
+    font-size: $font-size-2xl;
+  }
+  
+  .text-heading-3 {
+    font-size: $font-size-xl;
+  }
+  
+  .text-heading-4 {
+    font-size: $font-size-lg;
+  }
+}
+
+// Apply typography to the whole document (optional)
+@mixin apply-base-typography() {
+  html, body {
+    font-family: $font-family-body;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-family-heading;
+    margin-top: 0;
+  }
+}

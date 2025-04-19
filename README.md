@@ -1,4 +1,51 @@
-# BuffaloCityPopcorn
+# Buffalo City Popcorn
+
+A modern Angular 19 application using Material Design 3 theming and strict linting rules.
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v18+)
+- npm (v9+)
+
+### Installation
+```bash
+npm install
+```
+
+### Development Server
+```bash
+nx serve frontend
+```
+
+### Build
+```bash
+nx run frontend:build:production
+```
+
+### Linting
+```bash
+nx run frontend:lint
+```
+
+### Running Tests
+```bash
+nx run frontend:test
+```
+
+## Styling & Theming
+
+The project uses Material Design 3 theming imported from our executive-popcorn sister app. The styling features:
+
+- Modern SCSS module system with `@use` and `@forward`
+- Brand color palette (burgundy, amber, cream, etc.)
+- Seasonal and event-driven theming
+- Gamification styling for Poppy Points and rewards
+- Full MD3 integration for Angular Material components
+
+All styles are in `apps/frontend/src/styles/`.
+
+## Project Structure
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 

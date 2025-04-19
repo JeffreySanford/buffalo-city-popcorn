@@ -1,21 +1,79 @@
 @use '@angular/material' as mat;
-@use './styles/_theme.scss' as theme;
+@use './styles/_colors' as colors;
 
-// Include the Material core styles
+// Include the core Material styles (required)
 @include mat.core();
 
-// For Material 3 themes, we need to wrap the theme application in a selector
-// Don't call the mixin directly at the root level
-html {
-  @include theme.apply-material-theme(theme.$buffalo-light-theme);
-}
+// Define the theme directly here
+$theme: (
+  color: (
+    primary: colors.$mat-burgundy,
+    accent: colors.$mat-amber,
+    warn: colors.$mat-warn,
+    is-dark: false,
+    foreground: (
+      base: colors.$dark-text,
+      divider: rgba(colors.$dark-text, 0.12),
+      dividers: rgba(colors.$dark-text, 0.12),
+      disabled: rgba(colors.$dark-text, 0.38),
+      disabled-button: rgba(colors.$dark-text, 0.26),
+      disabled-text: rgba(colors.$dark-text, 0.38),
+      elevation: black,
+      hint-text: rgba(colors.$dark-text, 0.38),
+      secondary-text: rgba(colors.$dark-text, 0.54),
+      icon: rgba(colors.$dark-text, 0.54),
+      icons: rgba(colors.$dark-text, 0.54),
+      text: colors.$dark-text,
+      slider-min: rgba(colors.$dark-text, 0.87),
+      slider-off: rgba(colors.$dark-text, 0.26),
+      slider-off-active: rgba(colors.$dark-text, 0.38)
+    ),
+    background: (
+      status-bar: #e0e0e0,
+      app-bar: #f5f5f5,
+      background: colors.$light-bg,
+      hover: rgba(black, 0.04),
+      card: colors.$white,
+      dialog: colors.$white,
+      disabled-button: rgba(black, 0.12),
+      raised-button: colors.$white,
+      focused-button: rgba(black, 0.06),
+      selected-button: #e0e0e0,
+      selected-disabled-button: #bdbdbd,
+      disabled-button-toggle: #eeeeee,
+      unselected-chip: #e0e0e0,
+      disabled-list-option: #eeeeee,
+      tooltip: rgba(#616161, 0.9)
+    )
+  ),
+  density: 0
+);
 
-/* You can add global styles to this file, and also import other style files */
+// Apply theme to only the components we need (excluding datepicker)
+@include mat.core-theme($theme);
+@include mat.button-theme($theme);
+@include mat.card-theme($theme);
+@include mat.toolbar-theme($theme);
+@include mat.sidenav-theme($theme);
+@include mat.menu-theme($theme);
+@include mat.icon-theme($theme);
+@include mat.form-field-theme($theme);
+@include mat.input-theme($theme);
+@include mat.select-theme($theme);
+@include mat.checkbox-theme($theme);
+@include mat.radio-theme($theme);
+@include mat.progress-bar-theme($theme);
+@include mat.progress-spinner-theme($theme);
+@include mat.tabs-theme($theme);
+@include mat.dialog-theme($theme);
+@include mat.snack-bar-theme($theme);
+// DO NOT include mat.datepicker-theme($theme) - this is what's causing the error
+
+// Basic styles
 html, body { 
   height: 100%; 
   margin: 0;
-}
-
-body { 
-  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: colors.$light-bg;
+  color: colors.$dark-text;
 }

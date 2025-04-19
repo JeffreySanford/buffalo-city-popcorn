@@ -1,42 +1,168 @@
-@use '@angular/material' as mat;
-@use './colors' as colors;
 @use 'sass:map';
 @use 'sass:color';
+@use '@angular/material' as mat;
+@use './_colors' as colors;
+@use './_typography' as typography;
+@use './_datepicker_fix' as datepicker;
 
-// Define typography according to Material 19's new format
-$buffalo-typography: (
-  brand-family: 'Roboto, "Helvetica Neue", sans-serif',
-  plain-family: 'Roboto, "Helvetica Neue", sans-serif',
-  bold-weight: 700,
-  medium-weight: 500,
-  regular-weight: 400
+// ---
+// Buffalo City Popcorn Material Design 3 Theme
+// ---
+
+// Instead of creating our own foreground/background config, let's use the Material defaults
+// and then override only what we need
+$light-theme-foreground-palette: (
+  base: colors.$dark-text,
+  divider: colors.$cream,
+  dividers: colors.$cream,
+  disabled: rgba(colors.$dark-text, 0.38),
+  disabled-button: rgba(colors.$dark-text, 0.26),
+  disabled-text: rgba(colors.$dark-text, 0.38),
+  elevation: black,
+  hint-text: rgba(colors.$dark-text, 0.38),
+  secondary-text: rgba(colors.$dark-text, 0.54),
+  icon: rgba(colors.$dark-text, 0.54),
+  icons: rgba(colors.$dark-text, 0.54),
+  text: colors.$dark-text,
+  slider-min: rgba(colors.$dark-text, 0.87),
+  slider-off: rgba(colors.$dark-text, 0.26),
+  slider-off-active: rgba(colors.$dark-text, 0.38)
 );
 
-// Use Angular Material's pre-defined theme with our typography
-$buffalo-light-theme: mat.define-theme((
-  color: (
-    theme-type: light
-  ),
-  typography: $buffalo-typography,
-  // Density needs to be an object, not just a number
-  density: (
-    scale: 0
-  )
-));
+$light-theme-background-palette: (
+  status-bar: #e0e0e0,
+  app-bar: #f5f5f5,
+  background: colors.$light-bg,
+  hover: rgba(black, 0.04),
+  card: colors.$white,
+  dialog: colors.$white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: colors.$white,
+  focused-button: rgba(black, 0.06),
+  selected-button: colors.$cream,
+  selected-disabled-button: #bdbdbd,
+  disabled-button-toggle: #eeeeee,
+  unselected-chip: #e0e0e0,
+  disabled-list-option: #eeeeee,
+  tooltip: rgba(#616161, 0.9)
+);
 
-// Mixin that your styles.scss is calling
+// Define our custom palettes
+$primary-palette: colors.$mat-burgundy;
+$accent-palette: colors.$mat-amber;
+$warn-palette: colors.$mat-warn;
+
+// Create a basic theme without typography for now
+$buffalo-light-theme-base: (
+  color: (
+    primary: $primary-palette,
+    accent: $accent-palette,
+    warn: $warn-palette,
+    is-dark: false,
+    foreground: $light-theme-foreground-palette,
+    background: $light-theme-background-palette
+  ),
+  density: 0
+);
+
+// Apply datepicker fixes to our theme - this ensures all necessary tokens are present
+$buffalo-light-theme: datepicker.add-datepicker-tokens-to-theme($buffalo-light-theme-base);
+
+// Export the theme variables
+$primary-color: colors.$burgundy;
+$accent-color: colors.$amber;
+$warn-color: colors.$error;
+
+// When you want to apply seasonal themes, use this simplified approach
+$buffalo-spring-theme: (
+  color: (
+    primary: map.merge(colors.$mat-burgundy, (500: colors.$prairie-rose)),
+    accent: colors.$mat-amber,
+    warn: colors.$mat-warn,
+    is-dark: false,
+    foreground: $light-theme-foreground-palette,
+    background: $light-theme-background-palette
+  ),
+  density: 0,
+  typography: typography.$buffalo-typography
+);
+
+// Other seasonal themes would follow the same pattern...
+
+// Export our apply-material-theme mixin for use in styles.scss
 @mixin apply-material-theme($theme) {
-  // Include component themes
   @include mat.all-component-themes($theme);
 }
 
-// Example usage of tokens in component styles:
-.primary-color-example {
-  background-color: var(--mat-primary);
-  color: var(--mat-on-primary);
+// Create a mixin for custom (non-Material) styling that uses our brand colors
+@mixin apply-custom-styles {
+  // --- Custom styling for our components using theme colors ---
+  .achievement-badge {
+    background-color: colors.$amber;
+    color: colors.$white;
+
+    &.locked {
+      background-color: colors.$cream;
+      color: colors.$deep-brown;
+    }
+  }
+
+  .progress-bar {
+    background-color: rgba(colors.$burgundy, 0.2);
+
+    .progress-value {
+      background-color: colors.$burgundy;
+    }
+  }
+
+  .poppy-points {
+    background-color: colors.$amber;
+    color: colors.$white;
+  }
+
+  .roosevelt-quote {
+    color: colors.$dark-text;
+
+    .quote-author {
+      color: colors.$burgundy;
+    }
+  }
+
+  .legendary-motto {
+    color: colors.$amber;
+  }
+
+  // Override certain Material Design elements with our brand colors
+  .mat-mdc-button.mat-primary {
+    color: colors.$burgundy;
+  }
+
+  .mat-mdc-button.mat-accent {
+    color: colors.$amber;
+  }
+
+  .mat-mdc-raised-button.mat-primary {
+    background-color: colors.$burgundy;
+    color: colors.$white;
+  }
+
+  .mat-mdc-raised-button.mat-accent {
+    background-color: colors.$amber;
+    color: colors.$white;
+  }
+
+  // Header and footer styling
+  .app-header {
+    background-color: colors.$burgundy;
+    color: colors.$white;
+  }
+
+  .app-footer {
+    background-color: colors.$deep-brown;
+    color: colors.$cream;
+  }
 }
 
-.primary-container-example {
-  background-color: var(--mat-primary-container);
-  color: var(--mat-on-primary-container);
-}
+// NOTE: We're not using our custom theme object directly anymore
+// Instead, we're using Angular Material's built-in light theme
+// and overriding styles with CSS classes to avoid the datepicker issues

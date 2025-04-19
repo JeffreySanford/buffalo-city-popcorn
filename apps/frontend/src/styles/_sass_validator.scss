@@ -1,0 +1,64 @@
+@use 'sass:map';
+@use 'sass:color';
+@use './_colors' as colors;
+
+// Utility functions to help detect and prevent null color issues
+
+// Helper function to ensure a color is not null before using it in color functions
+@function ensure-color($color, $fallback: #000000) {
+  @if $color == null {
+    @warn "Null color detected, using fallback color";
+    @return $fallback;
+  }
+  @return $color;
+}
+
+// Helper function to validate a color palette
+@function validate-palette($palette, $name: "palette") {
+  @if $palette == null {
+    @error "#{$name} cannot be null";
+  }
+  
+  @if not map.has-key($palette, 500) {
+    @error "#{$name} must have a 500 key";
+  }
+  
+  @if not map.has-key($palette, "contrast") {
+    @warn "#{$name} should have a contrast map";
+  } @else {
+    $contrast: map.get($palette, "contrast");
+    @if not map.has-key($contrast, 500) {
+      @warn "#{$name} contrast map should have a 500 key";
+    }
+  }
+  
+  @return $palette;
+}
+
+// Helper function to safely create datepicker tokens
+@function create-datepicker-tokens($primary-color) {
+  // Ensure the primary color is not null
+  $safe-color: ensure-color($primary-color, colors.$burgundy);
+  
+  @return (
+    calendar-body-selected-state: $safe-color,
+    calendar-body-selected-state-content: colors.$white,
+    calendar-body-range-background: rgba($safe-color, 0.2),
+    calendar-body-in-range-background: rgba($safe-color, 0.2),
+    calendar-body-comparison-background: rgba($safe-color, 0.16),
+    calendar-body-preview-start-background: rgba($safe-color, 0.2),
+    calendar-body-preview-end-background: rgba($safe-color, 0.2),
+    calendar-body-preview-range-background: rgba($safe-color, 0.08),
+    calendar-body-in-comparison-range-background: rgba($safe-color, 0.04),
+    calendar-body-today-background: transparent,
+    calendar-body-today-content: $safe-color,
+    calendar-body-cell-content-today: $safe-color,
+    calendar-body-cell-content: colors.$dark-text,
+    calendar-body-disabled-content: rgba(colors.$dark-text, 0.38),
+    range-selection-background: rgba($safe-color, 0.2),
+    range-selection-start-background: $safe-color,
+    range-selection-end-background: $safe-color,
+    selected-background: $safe-color,
+    selected-text: colors.$white
+  );
+}

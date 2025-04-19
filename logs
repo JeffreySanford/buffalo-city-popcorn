@@ -1,0 +1,22 @@
+\@angular\material\core\theming\_theming.scss 216:3           -check-duplicate-theme-styles-v0()
+  node_modules\@angular\material\core\theming\_theming.scss 70:5            private-check-duplicate-theme-styles()
+    node_modules\@angular\material\core\theming\_all-theme.scss 45:3          all-component-themes()
+      apps\frontend\src\styles\_theme.scss 255:1                                @use
+        apps\frontend\src\styles.scss 3:1                                         root stylesheet [plugin angular-sass]
+
+	    angular:styles/global:styles:1:8:
+	          1 │ @import 'apps/frontend/src/styles.scss';
+		          ╵         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+			  ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————— 
+
+			   NX   Ran target build for project frontend (3s)
+
+			      ×  1/1 failed
+			         √  0/1 succeeded [0 read from cache]
+
+				 View structured, searchable error logs at https://nx.app/runs/z8DVKTT1O3
+
+				 PS C:\repos\buffalo-city-popcorn> n:

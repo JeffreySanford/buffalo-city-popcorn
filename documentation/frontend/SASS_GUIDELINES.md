@@ -19,6 +19,39 @@ Angular 19 uses Sass modules with `@use` and `@forward` instead of the deprecate
 - Never use legacy `$primary-color`, `$secondary-color`, etc. Use `colors.$burgundy`, `colors.$amber`, etc.
 - Do not use global selectors (e.g., `a { ... }`, `p { ... }`) in component SCSS. Scope all styles to the component or use Angular Material mixins.
 
+### Import Path Guidelines
+
+To avoid ambiguous imports and make file references clearer:
+
+- **Use relative paths for files in the same project**:
+  ```scss
+  // RECOMMENDED: Use relative paths for same-project imports
+  @use './styles/_theme' as theme;
+  
+  // AVOID: Absolute paths that might not work across environments
+  @use 'apps/frontend/src/styles/_theme' as theme;
+  ```
+
+- **Include the leading underscore** in your imports for partial files to make it clear you're importing a partial:
+  ```scss
+  // RECOMMENDED: Include the underscore
+  @use './styles/_theme' as theme;
+  
+  // AVOID: Omitting the underscore
+  @use './styles/theme' as theme;
+  ```
+
+- **Always use the full namespace** for consistent readability:
+  ```scss
+  // RECOMMENDED: Full namespace
+  @use 'apps/frontend/src/styles/_colors' as colors;
+  
+  // AVOID: Short namespace
+  @use 'apps/frontend/src/styles/_colors' as c;
+  ```
+
+This approach helps prevent import resolution issues with the Angular CLI and makes file references more explicit and maintainable.
+
 ### Example Usage
 
 ```scss

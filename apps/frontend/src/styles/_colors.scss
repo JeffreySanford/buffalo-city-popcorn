@@ -1,0 +1,182 @@
+// Buffalo City Popcorn Brand Color Palette
+
+@use 'sass:color';
+@use '@angular/material' as mat;
+
+// Brand colors
+$burgundy: #8B2131;         // Primary - "Burgundy" (was $primary-color)
+$amber: #F7941D;            // Secondary - "Amber" (was $secondary-color)
+$cream: #F5F1E6;            // Accent - "Cream" (was $cream-color)
+$deep-brown: #5D4037;       // Accent - "Deep Brown" (was $dark-brown)
+$buffalo-blue: #4A7B9D;     // Accent - "Buffalo Blue" (was $buffalo-blue)
+$dakota-rose: #E32636;      // Accent - "Dakota Rose" (not previously used directly)
+$light-bg: #f9f9f9;
+$white: #FFF;
+$dark-text: #333;
+$error: #F44336;
+
+// Feedback colors
+$success: #4CAF50;
+$warning: #FF9800;
+$info: $buffalo-blue;
+
+// Prairie/Badlands inspiration
+$badlands-clay: #A84B38;
+$prairie-gold: #E6B84C;
+$frontier-sky: #7BA7BC;
+$prairie-rose: #EAC3C3;
+$antique-parchment: #F1EAD7;
+
+// Patriotic
+$patriotic-red: #B22234;
+$patriotic-blue: #3C3B6E;
+
+// Material palettes (update to use new variable names)
+$mat-burgundy: (
+  50: color.adjust($burgundy, $lightness: 40%),
+  100: color.adjust($burgundy, $lightness: 32%),
+  200: color.adjust($burgundy, $lightness: 24%),
+  300: color.adjust($burgundy, $lightness: 16%),
+  400: color.adjust($burgundy, $lightness: 8%),
+  500: $burgundy,
+  600: color.adjust($burgundy, $lightness: -8%),
+  700: color.adjust($burgundy, $lightness: -16%),
+  800: color.adjust($burgundy, $lightness: -24%),
+  900: color.adjust($burgundy, $lightness: -32%),
+  A100: color.adjust($burgundy, $lightness: 30%, $saturation: 30%),
+  A200: color.adjust($burgundy, $lightness: 25%, $saturation: 30%),
+  A400: color.adjust($burgundy, $lightness: 20%, $saturation: 30%),
+  A700: color.adjust($burgundy, $lightness: 15%, $saturation: 30%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mat-amber: (
+  50: color.adjust($amber, $lightness: 35%),
+  100: color.adjust($amber, $lightness: 28%),
+  200: color.adjust($amber, $lightness: 21%),
+  300: color.adjust($amber, $lightness: 14%),
+  400: color.adjust($amber, $lightness: 7%),
+  500: $amber,
+  600: color.adjust($amber, $lightness: -7%),
+  700: color.adjust($amber, $lightness: -14%),
+  800: color.adjust($amber, $lightness: -21%),
+  900: color.adjust($amber, $lightness: -28%),
+  A100: color.adjust($amber, $lightness: 30%, $saturation: 30%),
+  A200: color.adjust($amber, $lightness: 20%, $saturation: 30%),
+  A400: color.adjust($amber, $lightness: 10%, $saturation: 30%),
+  A700: color.adjust($amber, $lightness: 5%, $saturation: 30%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(white, 0.87),
+    900: rgba(white, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
+  )
+);
+
+$mat-patriotic-red: (
+  50: color.adjust($patriotic-red, $lightness: 40%),
+  100: color.adjust($patriotic-red, $lightness: 35%),
+  200: color.adjust($patriotic-red, $lightness: 30%),
+  300: color.adjust($patriotic-red, $lightness: 25%),
+  400: color.adjust($patriotic-red, $lightness: 15%),
+  500: $patriotic-red,
+  600: color.adjust($patriotic-red, $lightness: -5%),
+  700: color.adjust($patriotic-red, $lightness: -10%),
+  800: color.adjust($patriotic-red, $lightness: -15%),
+  900: color.adjust($patriotic-red, $lightness: -20%),
+  contrast: (
+    50: $dark-text,
+    100: $dark-text,
+    200: $dark-text,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white
+  )
+);
+$mat-patriotic-blue: (
+  50: color.adjust($patriotic-blue, $lightness: 40%),
+  100: color.adjust($patriotic-blue, $lightness: 35%),
+  200: color.adjust($patriotic-blue, $lightness: 30%),
+  300: color.adjust($patriotic-blue, $lightness: 25%),
+  400: color.adjust($patriotic-blue, $lightness: 15%),
+  500: $patriotic-blue,
+  600: color.adjust($patriotic-blue, $lightness: -5%),
+  700: color.adjust($patriotic-blue, $lightness: -10%),
+  800: color.adjust($patriotic-blue, $lightness: -15%),
+  900: color.adjust($patriotic-blue, $lightness: -20%),
+  contrast: (
+    50: $dark-text,
+    100: $dark-text,
+    200: $dark-text,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white
+  )
+);
+$mat-warn: (
+  50: color.adjust($error, $lightness: 40%),
+  100: color.adjust($error, $lightness: 32%),
+  200: color.adjust($error, $lightness: 24%),
+  300: color.adjust($error, $lightness: 16%),
+  400: color.adjust($error, $lightness: 8%),
+  500: $error,
+  600: color.adjust($error, $lightness: -8%),
+  700: color.adjust($error, $lightness: -16%),
+  800: color.adjust($error, $lightness: -24%),
+  900: color.adjust($error, $lightness: -32%),
+  A100: color.adjust($error, $lightness: 30%, $saturation: 30%),
+  A200: color.adjust($error, $lightness: 25%, $saturation: 30%),
+  A400: color.adjust($error, $lightness: 20%, $saturation: 30%),
+  A700: color.adjust($error, $lightness: 15%, $saturation: 30%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+// Use these Material palettes to create your theme in theme.scss
