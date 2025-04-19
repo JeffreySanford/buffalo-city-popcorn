@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@use './styles/_theme.scss' as theme;
+
+// Include the Material core styles
+@include mat.core();
+
+// For Material 3 themes, we need to wrap the theme application in a selector
+// Don't call the mixin directly at the root level
+html {
+  @include theme.apply-material-theme(theme.$buffalo-light-theme);
+}
+
+/* You can add global styles to this file, and also import other style files */
+html, body { 
+  height: 100%; 
+  margin: 0;
+}
+
+body { 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}

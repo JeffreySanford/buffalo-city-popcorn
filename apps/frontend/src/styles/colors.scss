@@ -1,0 +1,61 @@
+@use 'sass:color';
+
+// Brand color variables
+$burgundy: #8B2131;
+$amber: #F7941D;
+$cream: #F5F1E6;
+$deep-brown: #5D4037;
+$buffalo-blue: #4A7B9D;
+$dakota-rose: #E32636;
+$white: #FFFFFF;
+
+// Material Design 3 color palettes for Angular Material 19
+$mat-burgundy: (
+  50: color.adjust($burgundy, $lightness: 40%),
+  100: color.adjust($burgundy, $lightness: 32%),
+  200: color.adjust($burgundy, $lightness: 24%),
+  300: color.adjust($burgundy, $lightness: 16%),
+  400: color.adjust($burgundy, $lightness: 8%),
+  500: $burgundy,
+  600: color.adjust($burgundy, $lightness: -8%),
+  700: color.adjust($burgundy, $lightness: -16%),
+  800: color.adjust($burgundy, $lightness: -24%),
+  900: color.adjust($burgundy, $lightness: -32%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  )
+);
+
+$mat-amber: (
+  50: color.adjust($amber, $lightness: 35%),
+  100: color.adjust($amber, $lightness: 28%),
+  200: color.adjust($amber, $lightness: 21%),
+  300: color.adjust($amber, $lightness: 14%),
+  400: color.adjust($amber, $lightness: 7%),
+  500: $amber,
+  600: color.adjust($amber, $lightness: -7%),
+  700: color.adjust($amber, $lightness: -14%),
+  800: color.adjust($amber, $lightness: -21%),
+  900: color.adjust($amber, $lightness: -28%),
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(white, 0.87),
+    900: rgba(white, 0.87),
+  )
+);

@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+// Stub for build: define your typography map here
+$buffalo-typography: (
+  font-family: 'Arial, sans-serif',
+  font-size: 16px,
+  font-weight: 400,
+  line-height: 1.5,
+  letter-spacing: 0.5px,
+);

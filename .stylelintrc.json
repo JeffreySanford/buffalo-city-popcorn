@@ -1,0 +1,31 @@
+{
+  "customSyntax": "postcss-scss",
+  "ignoreFiles": [
+    "apps/frontend/src/styles/colors.scss",
+    "apps/frontend/src/styles/typography.scss"
+  ],
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "at-rule-disallowed-list": ["import"],
+    "at-rule-allowed-list": ["use", "forward", "mixin", "include"],
+    "function-disallowed-list": ["lighten", "darken", "saturate", "desaturate"],
+    "declaration-property-value-allowed-list": {
+      "/color/": [
+        "^colors\\.[a-z0-9\\-]+$",
+        "transparent",
+        "inherit",
+        "/^map\\.get/"
+      ]
+    },
+    "scss/dollar-variable-pattern": "^colors\\.[a-z0-9\\-]+$"
+  },
+  "overrides": [
+    {
+      "files": ["apps/frontend/src/styles/_theme.scss"],
+      "rules": {
+        "declaration-property-value-allowed-list": null,
+        "scss/dollar-variable-pattern": null
+      }
+    }
+  ]
+}
